@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="DELETE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>Default GET</function_name>
+        <http_method>get</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>AlertTracing API [ Default GET ]</qualified_name>
+        <rest_endpoint>http://servicenow.alertenterprise.com/alnth-health-safety-webapp/api/v1/hs/affecteduser</rest_endpoint>
+        <rest_message display_value="AlertTracing API">5b81ebb8dbbd9010adac9f5faa9619ab</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-07-02 07:33:37</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d1942ff8dbbd9010adac9f5faa9619e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default GET</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_rest_message_fn_d1942ff8dbbd9010adac9f5faa9619e7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-02 07:33:37</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</application>
+        <file_path/>
+        <instance_id>e930a3a4db4f5780cbf6d5b0cf9619fd</instance_id>
+        <instance_name>ven02573</instance_name>
+        <name>sys_rest_message_fn_d1942ff8dbbd9010adac9f5faa9619e7</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>AlertTracing API [ Default GET ]</qualified_name><rest_endpoint>http://servicenow.alertenterprise.com/alnth-health-safety-webapp/api/v1/hs/affecteduser</rest_endpoint><rest_message display_value="AlertTracing API">5b81ebb8dbbd9010adac9f5faa9619ab</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-07-02 07:33:37</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>d1942ff8dbbd9010adac9f5faa9619e7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope><sys_update_name>sys_rest_message_fn_d1942ff8dbbd9010adac9f5faa9619e7</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-07-02 07:33:37</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+        <payload_hash>1578413914</payload_hash>
+        <record_name>Default GET</record_name>
+        <reverted_from/>
+        <source>be49e06edb6d1410a3b6176a489619e7</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-07-02 07:33:37</sys_created_on>
+        <sys_id>95942ff8dbbd9010adac9f5faa9619e9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1730e71faa20000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-02 07:33:37</sys_updated_on>
+        <type>HTTP Method</type>
+        <update_guid>dd942ff8adbd901074d54bd5a7311be8</update_guid>
+        <update_guid_history>dd942ff8adbd901074d54bd5a7311be8:1578413914</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-07-02 08:17:03</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sys_rest_message_fn">sys_rest_message_fn</sys_db_object>
+        <sys_id>0b040f7620b24b309288cfd2629c6690</sys_id>
+        <sys_metadata>d1942ff8dbbd9010adac9f5faa9619e7</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default GET</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_scope_delete display_value="">1d11925a56784ece845c3ff4fc10a369</sys_scope_delete>
+        <sys_update_name>sys_rest_message_fn_d1942ff8dbbd9010adac9f5faa9619e7</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_fn_d1942ff8dbbd9010adac9f5faa9619e7">95942ff8dbbd9010adac9f5faa9619e9</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-02 08:17:03</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

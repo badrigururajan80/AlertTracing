@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile">
+    <oauth_entity_profile action="INSERT_OR_UPDATE">
+        <default>true</default>
+        <grant_type>password</grant_type>
+        <jwt_provider/>
+        <name>AlertHSService default_profile</name>
+        <oauth_entity display_value="AlertHSService">cd9e5b88dbb15010adac9f5faa9619c3</oauth_entity>
+        <sys_class_name>oauth_entity_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-06-29 23:12:44</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e0ce5b88dbb15010adac9f5faa9619ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AlertHSService default_profile</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>oauth_entity_profile_e0ce5b88dbb15010adac9f5faa9619ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-06-29 23:12:44</sys_updated_on>
+    </oauth_entity_profile>
+</record_update>

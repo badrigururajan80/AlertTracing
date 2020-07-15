@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_aleen_trace.AlertScheduledDiagnosticsUtil</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>AlertScheduledDiagnosticsUtil</name>
+        <script><![CDATA[var AlertScheduledDiagnosticsUtil = Class.create();
+AlertScheduledDiagnosticsUtil.prototype = {
+	initialize: function(diagnostic_request, actionGr) {
+			
+			//Configurations
+			
+			this.diagnostic_request = diagnostic_request;
+			this.user_table = 'sys_user';
+			this.diagnostic_request_table = 'sn_imt_diagnosis_diagnostic_request';
+			this.impacted_user_table = 'sn_imt_diagnosis_impacted_users';
+			this.max_retries = gs.getProperty('sn_imt_diagnosis.maximum.retries') || 3;
+			this.page_size = gs.getProperty('sn_imt_diagnosis.page.size') || 20;
+			this.actionGr = actionGr;
+			this.token = null;
+		
+			var diagnosticGr = new GlideRecordSecure(this.diagnostic_request_table);
+			if(diagnosticGr.get(this.diagnostic_request)){
+				this.affected_user = diagnosticGr.getValue('affected_user');
+				this.end_date = diagnosticGr.getValue('end_date');
+				this.start_date = diagnosticGr.getValue('start_date');
+			
+			}
+			
+			
+			
+			
+	},
+	markUserAsAffected: function (){
+		
+		var returnVal = new x_aleen_trace.AlertReaderUtils().markUserAsAffected({
+								tableName: this.diagnostic_request_table,
+								diagnosticRequest: this.diagnostic_request,
+								affectedUser: this.affected_user,
+								startDate: this.start_date,
+								endDate: this.end_date,
+								userTable: this.user_table
+							});
+		var result = returnVal.result;
+		if(result=="failure")
+		{
+			var errorMessage = returnVal.errorMessage;
+			if(errorMessage=="401"){
+				returnVal = new x_aleen_trace.AlertReaderUtils().markUserAsAffected({
+								tableName: this.diagnostic_request_table,
+								diagnosticRequest: this.diagnostic_request,
+								affectedUser: this.affected_user,
+								startDate: this.start_date,
+								endDate: this.end_date,
+								userTable: this.user_table
+							});
+				result = returnVal.result;
+				
+			}
+			
+				
+		}
+		
+		return result;
+		
+		
+		
+	},
+	addImpactedUsersFromBadgeReader: function (){
+		
+		var returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
+								tableName: this.diagnostic_request_table,
+								diagnosticRequest: this.diagnostic_request,
+								affectedUser: this.affected_user,
+								startDate: this.start_date,
+								endDate: this.end_date,
+								userTable: this.user_table
+							});
+		
+		var result = returnVal.result;
+		if(result=="failure")
+		{
+			var errorMessage = returnVal.errorMessage;
+			if(errorMessage=="401"){
+				returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
+								tableName: this.diagnostic_request_table,
+								diagnosticRequest: this.diagnostic_request,
+								affectedUser: this.affected_user,
+								startDate: this.start_date,
+								endDate: this.end_date,
+								userTable: this.user_table
+							});
+				result = returnVal.result;
+				
+			}
+			
+				
+		}
+		if(result=="success"){
+			for (var i = 0; i < returnVal.data.length; i++){
+				var grProbableUser = new GlideRecordSecure(this.user_table);
+				grProbableUser.addQuery('email', returnVal.data[i]);
+				grProbableUser.addEncodedQuery('sys_id!=' + this.affected_user);
+				grProbableUser.query();
+				if (grProbableUser.next()) {
+					var impactedUser = this._impactedUserFound(grProbableUser.getUniqueValue(), {});
+					if (impactedUser==null) {
+						this._addBadgeUsers(grProbableUser, "insert");
+					}
+					else {
+						this._addBadgeUsers(impactedUser, "update");
+					}
+				}
+											
+											
+											
+											
+			}
+		}
+		
+		return result;
+		
+	},
+	_addBadgeUsers: function(grRec, action){
+		gs.info("_addBadgeUsers:"+grRec+":"+action);
+		if (action == "insert") {
+				var grImpacted = new GlideRecordSecure(this.impacted_user_table);
+				grImpacted.initialize();
+				grImpacted.diagnostic_request = this.diagnostic_request;
+				grImpacted.from_badge_reader = true;
+				grImpacted.user = grRec.getUniqueValue();
+				grImpacted.insert();
+								
+		} else if (action == "update") {
+			
+				grRec.from_badge_reader = true;
+				grRec.update();
+		}
+		
+	},
+	_impactedUserFound: function (userId, params) {
+							var impactedUserGr = new GlideRecordSecure(this.impacted_user_table);
+							impactedUserGr.addQuery('user', userId);
+							impactedUserGr.addQuery('diagnostic_request', this.diagnostic_request);
+							for (var k in params) {
+								impactedUserGr.addQuery(k, params[k]);
+							}
+							impactedUserGr.setLimit(1);
+							impactedUserGr.query();
+							if(impactedUserGr.next())
+								return impactedUserGr;
+							else
+								return null;
+	},
+     type: 'AlertScheduledDiagnosticsUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-06-24 20:30:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>78623ca2dbad1410a3b6176a489619c3</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>AlertScheduledDiagnosticsUtil</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_script_include_78623ca2dbad1410a3b6176a489619c3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-04 09:03:42</sys_updated_on>
+    </sys_script_include>
+</record_update>

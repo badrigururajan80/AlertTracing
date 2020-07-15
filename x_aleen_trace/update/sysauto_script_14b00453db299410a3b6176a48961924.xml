@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <name>Execute Badge Diagnostics (AlertEnterprise)</name>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:00:30</run_period>
+        <run_start>2020-06-26 23:07:04</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[gs.info('Start of execution from Execute physical access diagnostic events');
+var util = '';
+var max_retries = gs.getProperty('sn_imt_diagnosis.maximum.retries') || 3;
+
+
+var diagnosticGr = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGr.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=pending^type=badge_reader');
+diagnosticGr.query();
+while (diagnosticGr.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries > parseInt(diagnosticGr.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGr.diagnostic_request, diagnosticGr);
+			var result = util.markUserAsAffected();
+			if(result=="success"){
+					diagnosticGr.x_aleen_trace_alert_state='inprogress';
+					diagnosticGr.number_of_retries=0;
+					diagnosticGr.update();
+			} else if(result=="failure"){
+					diagnosticGr.number_of_retries+=1;
+					if(max_retries > parseInt(diagnosticGr.getValue('number_of_retries'))){
+						diagnosticGr.state='failed';
+						diagnosticGr.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGr.update();
+			}
+			
+		}
+		
+	}
+}
+
+var diagnosticGrIP = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGrIP.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=inprogress^type=badge_reader');
+diagnosticGrIP.query();
+
+while (diagnosticGrIP.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries > parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGrIP.diagnostic_request, diagnosticGrIP);
+			var addResult = util.addImpactedUsersFromBadgeReader();
+			if(addResult=="success"){
+					diagnosticGrIP.x_aleen_trace_alert_state='success';
+					diagnosticGrIP.state= 'success';
+					diagnosticGrIP.update();
+			} else if(addResult=="failure"){
+					diagnosticGrIP.number_of_retries+=1;
+					if(max_retries > parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+						diagnosticGrIP.state='failed';
+						diagnosticGrIP.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGrIP.update();
+			}
+			
+		}
+		
+	}
+}
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-06-26 23:18:04</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>14b00453db299410a3b6176a48961924</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>Execute Badge Diagnostics (AlertEnterprise)</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sysauto_script_14b00453db299410a3b6176a48961924</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-04 08:51:09</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

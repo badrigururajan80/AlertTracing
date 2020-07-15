@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_aleen_trace.AlertReaderUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>AlertReaderUtils</name>
+        <script><![CDATA[var AlertReaderUtils = Class.create();
+AlertReaderUtils.prototype = {
+	initialize: function() {
+			this.potentialExposureSet = {};
+			this.IMPACTED_USER_TABLE = 'sn_imt_diagnosis_impacted_users';
+			this.offSetValue = 0;
+			this.userTimeZone = 'US/Pacific';
+			this.timeZoneUtils = 'TimeZoneUtils';
+			this.getTimeZoneOffset = 'getTimeZoneOffSet';
+			this.token = null;
+			
+		},
+	setUserTimeZone: function(userId) {
+				var userRecord = new GlideRecordSecure('sys_user');
+				if (userRecord.get(userId)) {
+					var timeZoneString = userRecord.getValue('time_zone') || this.userTimeZone;
+					this.userTimeZone = timeZoneString;
+				}
+			},
+		
+			checkTimeZoneFunctionExist: function() {
+			
+				var timeZoneUtils = global && global[this.timeZoneUtils] ? new global[this.timeZoneUtils](): undefined;
+				if (timeZoneUtils && timeZoneUtils[this.getTimeZoneOffset]) {
+					return true;
+				}
+				return false;
+			},
+		
+			setOffSetValue: function(timeZoneStr, startDateTime) {
+				var offset = 0;
+				if (this.checkTimeZoneFunctionExist()) {
+					var timeZoneUtil = new global[this.timeZoneUtils]();
+						if (startDateTime) {
+						 offset = timeZoneUtil[this.getTimeZoneOffset](timeZoneStr, startDateTime) || 0;
+					}
+					else {
+						offset = timeZoneUtil[this.getTimeZoneOffset](timeZoneStr) || 0;
+					}
+	
+					if (!isNaN(offset)) {
+						this.offSetValue = offset;
+					}
+				}
+				
+			},
+	setToken: function (userName,password,authProfile){
+		
+			
+			var oAuthClient = new sn_auth.GlideOAuthClient();
+			gs.info("authProfile:"+authProfile+"userName:"+userName+"Password:"+password);
+			
+			
+			var json = new global.JSON();
+			var existingToken = oAuthClient.getToken(authProfile,userName);
+		
+			if(existingToken==null){
+				
+				gs.info("Existing token is empty");
+				var params = {grant_type:"password", username:''+userName, password:''+password};
+				gs.info("params:"+params.username+":"+params.password);
+				var text = json.encode(params);
+				var tokenResponse = oAuthClient.requestToken(authProfile, text);
+				gs.info("Error:"+tokenResponse.getErrorMessage());
+
+				var token = tokenResponse.getToken();
+				var access_token = token.getAccessToken() ;
+
+				gs.info("AccessToken:" + access_token);
+				gs.info("AccessTokenExpiresIn:" + token.getExpiresIn());
+				gs.info(" RefreshToken:" + token.getRefreshToken());
+
+
+				this.token = access_token;
+			}else {
+				gs.info("Existing token is not empty");
+				if(existingToken.getExpiresIn()>0){
+					gs.info("Existing token is not empty/expired");
+					this.token = existingToken.getAccessToken();
+				} else {
+					gs.info("Existing token is empty/expired");
+					var refreshParams = {grant_type:"refresh_token", username:'admin', password:'QWxlcnQxMjM0'};
+					var refreshText = json.encode(params);
+					var refreshToken =  oAuthClient.requestToken(authProfile, refreshText);
+					gs.info("Error:"+refreshToken.getErrorMessage());
+					
+					var rToken = refreshToken.getToken();
+					var r_access_token = rToken.getAccessToken() ;
+
+					gs.info("AccessToken:" + r_access_token);
+					gs.info("AccessTokenExpiresIn:" + rToken.getExpiresIn());
+					gs.info(" RefreshToken:" + rToken.getRefreshToken());
+
+
+					this.token = r_access_token;
+					
+					
+				}
+			}
+
+			
+		
+			
+	},
+	markUserAsAffected: function (diagnosticRequestParams){
+		
+		var grEmp = new GlideRecordSecure(diagnosticRequestParams.userTable);
+		if(grEmp.get(diagnosticRequestParams.affectedUser)){
+			var user_email = grEmp.getValue('email');
+		
+			var userName;
+			var password;
+			var authProfile;
+			var settingsGr = new GlideRecordSecure('x_aleen_trace_alerttracing_settings');
+			settingsGr.query();
+			while (settingsGr.next()) {
+					userName = settingsGr.user_name;
+					password = settingsGr.password.getDecryptedValue();
+					authProfile = settingsGr.auth_entity;
+			}
+
+
+
+
+			this.setToken(userName,password,authProfile);
+			gs.info(" Tokenval:"+this.token+":Email:"+user_email);
+			if(this.token==null || this.token==undefined){
+				return {result: "failure", errorMessage: "tokenNotFound"};
+			}
+
+
+			try { 
+					 var r = new sn_ws.RESTMessageV2('x_aleen_trace.AlertTracingAPI', 'MarkAffected');
+					 r.setStringParameter('emailId', user_email);
+					 r.setRequestHeader('Content-Type','application/json');
+					 r.setRequestHeader('Authorization', 'Bearer ' + this.token);
+
+
+					gs.info(" Calling mark affected");
+
+					 var response = r.execute();
+					 var responseBody = response.getBody();
+					 var httpStatus = response.getStatusCode();
+					 gs.info(responseBody+":"+httpStatus+responseBody);
+					 if(httpStatus==200){
+						 var result = JSON.parse(responseBody);
+						 var responseMessage = result.responseMessage;
+						 var success = result.success;
+						 var failure = result.failure;
+						 if(failure==true){
+							 return {result: "failure",errorMessage: responseMessage};
+						 } else {
+							 return {result: "success"};
+						 }
+
+					 }else{
+						 return {result: "failure",errorMessage: httpStatus};
+					 }
+
+				}
+				catch(ex) {
+					 gs.info("Error:"+ex.message);
+					 return {result: "failure",errorMessage: ex.message};
+				}
+			
+		} else {
+			return {result: "failure", errorMessage: "Affected User Not Found"};
+		}
+		
+		
+		
+		
+	},
+	addImpactedUsersFromBadgeReader: function (diagnosticRequestParams){
+		var impactedUsers = {};
+		var startDateTime = new GlideDateTime();
+		startDateTime.setValue(diagnosticRequestParams.startDate.toString());
+		var endDateTime = new GlideDateTime();
+		endDateTime.setValue(diagnosticRequestParams.endDate.toString());
+		this.setUserTimeZone(diagnosticRequestParams.affectedUser);
+		this.setOffSetValue(this.userTimeZone, startDateTime);
+		startDateTime.add(this.offSetValue);
+		endDateTime.add(this.offSetValue);
+		
+		var startDate = startDateTime.getDate().getByFormat("MM/dd/yyyy");
+		var startTime = startDateTime.getTime().getByFormat("HH:mm:ss");
+		var startDateTimeStr =  startDate+' '+startTime;
+		
+		var endDate = endDateTime.getDate().getByFormat("MM/dd/yyyy");
+		var endTime = endDateTime.getTime().getByFormat("HH:mm:ss");
+		var endDateTimeStr =  endDate+' '+endTime;
+		
+		gs.info("Call webservice:"+diagnosticRequestParams.userTable+":"+diagnosticRequestParams.affectedUser);
+		
+		var grEmp = new GlideRecordSecure(diagnosticRequestParams.userTable);
+		if(grEmp.get(diagnosticRequestParams.affectedUser)){
+			var user_email = grEmp.getValue('email');
+		
+			
+			gs.info("Call webservice:"+diagnosticRequestParams.affectedUser+":"+startDateTimeStr+":"+endDateTimeStr+":"+diagnosticRequestParams.diagnosticRequest);
+
+			var userName;
+			var password;
+			var authProfile;
+			var settingsGr = new GlideRecordSecure('x_aleen_trace_alerttracing_settings');
+			settingsGr.query();
+			while (settingsGr.next()) {
+					userName = settingsGr.user_name;
+					password = settingsGr.password.getDecryptedValue();
+					authProfile = settingsGr.auth_entity;
+			}
+
+			this.setToken(userName,password,authProfile);
+			if(this.token==null || this.token==undefined){
+				return {result: "failure", errorMessage: "tokenNotFound"};
+			}
+			try { 
+					 var r = new sn_ws.RESTMessageV2('x_aleen_trace.AlertTracingAPI', 'GetImpactedUsers');
+					 r.setStringParameter('emailId', user_email);
+					 r.setStringParameter('startDate', startDateTimeStr);
+					 r.setStringParameter('endDate', endDateTimeStr);
+					 r.setStringParameter('start', '-1');
+					 r.setStringParameter('fetch', '-1');
+					 r.setRequestHeader('Authorization', 'Bearer ' + this.token);
+
+
+					 var response = r.execute();
+					 var responseBody = response.getBody();
+					 var httpStatus = response.getStatusCode();
+					 gs.info(responseBody+":"+httpStatus);
+					 if(httpStatus==200){
+
+						 var result = JSON.parse(responseBody);
+						 var responseMessage = result.responseMessage;
+						 var success = result.success;
+						 var warning = result.warningException;
+						 var failure = result.failure;
+						 if(failure==true){
+							 return {result: "failure",errorMessage: responseMessage};
+						 }
+						 if(warning==true){
+							 return {result: "warning",errorMessage: responseMessage};
+						 }
+						 if(success==true){
+							var dataSet = [];
+							for (var i = 0; i < result.results.length; i++) {
+								var resultData = result.results[i];
+								dataSet.push(resultData.userId);
+							}
+							return { result: "success", data: new global.ArrayUtil().unique(dataSet)};
+						 } 
+					 }else{
+						 return {result: "failure",errorMessage: httpStatus};
+					 }
+
+				}
+				catch(ex) {
+					 gs.info(ex.message);
+					 return {result: "failure",errorMessage: httpStatus};
+				}
+			
+		} else {
+			return {result: "failure", errorMessage: "Affected User Not Found"};
+		}
+		
+		
+	},
+     type: 'AlertReaderUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-06-26 21:05:06</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5e44a7cfdba59410a3b6176a48961942</sys_id>
+        <sys_mod_count>87</sys_mod_count>
+        <sys_name>AlertReaderUtils</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_script_include_5e44a7cfdba59410a3b6176a48961942</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-07-04 09:15:57</sys_updated_on>
+    </sys_script_include>
+</record_update>
