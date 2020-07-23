@@ -156,10 +156,11 @@ AlertReaderUtils.prototype = {
 						 var responseMessage = result.responseMessage;
 						 var success = result.success;
 						 var failure = result.failure;
+						 var totalCount = result.count;
 						 if(failure==true){
 							 return {result: "failure",errorMessage: responseMessage};
 						 } else {
-							 return {result: "success"};
+							 return {result: "success", "totalCount": totalCount };
 						 }
 
 					 }else{
@@ -228,8 +229,8 @@ AlertReaderUtils.prototype = {
 					 r.setStringParameter('emailId', user_email);
 					 r.setStringParameter('startDate', startDateTimeStr);
 					 r.setStringParameter('endDate', endDateTimeStr);
-					 r.setStringParameter('start', '-1');
-					 r.setStringParameter('fetch', '-1');
+					 r.setStringParameter('start', diagnosticRequestParams.start);
+					 r.setStringParameter('fetch', diagnosticRequestParams.pageSize);
 					 r.setRequestHeader('Authorization', 'Bearer ' + this.token);
 
 
@@ -281,7 +282,7 @@ AlertReaderUtils.prototype = {
         <sys_created_on>2020-06-26 21:05:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5e44a7cfdba59410a3b6176a48961942</sys_id>
-        <sys_mod_count>87</sys_mod_count>
+        <sys_mod_count>89</sys_mod_count>
         <sys_name>AlertReaderUtils</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -289,6 +290,6 @@ AlertReaderUtils.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_5e44a7cfdba59410a3b6176a48961942</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-04 09:15:57</sys_updated_on>
+        <sys_updated_on>2020-07-20 08:14:02</sys_updated_on>
     </sys_script_include>
 </record_update>

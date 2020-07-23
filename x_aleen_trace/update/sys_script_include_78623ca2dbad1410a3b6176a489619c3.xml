@@ -48,7 +48,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 		if(result=="failure")
 		{
 			var errorMessage = returnVal.errorMessage;
-			if(errorMessage=="401"){
+			if(errorMessage!="200"){
 				returnVal = new x_aleen_trace.AlertReaderUtils().markUserAsAffected({
 								tableName: this.diagnostic_request_table,
 								diagnosticRequest: this.diagnostic_request,
@@ -71,55 +71,75 @@ AlertScheduledDiagnosticsUtil.prototype = {
 	},
 	addImpactedUsersFromBadgeReader: function (){
 		
-		var returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
+		var fetchData = true;
+		var pageStart = 0;
+		
+		while(fetchData){
+			var returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
 								tableName: this.diagnostic_request_table,
 								diagnosticRequest: this.diagnostic_request,
 								affectedUser: this.affected_user,
 								startDate: this.start_date,
 								endDate: this.end_date,
-								userTable: this.user_table
+								userTable: this.user_table,
+								start: pageStart,
+								pageSize: this.pageSize
 							});
 		
-		var result = returnVal.result;
-		if(result=="failure")
-		{
-			var errorMessage = returnVal.errorMessage;
-			if(errorMessage=="401"){
-				returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
-								tableName: this.diagnostic_request_table,
-								diagnosticRequest: this.diagnostic_request,
-								affectedUser: this.affected_user,
-								startDate: this.start_date,
-								endDate: this.end_date,
-								userTable: this.user_table
-							});
-				result = returnVal.result;
+			var result = returnVal.result;
+			if(result=="failure")
+			{
+				var errorMessage = returnVal.errorMessage;
+				if(errorMessage!="200"){
+					returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
+									tableName: this.diagnostic_request_table,
+									diagnosticRequest: this.diagnostic_request,
+									affectedUser: this.affected_user,
+									startDate: this.start_date,
+									endDate: this.end_date,
+									userTable: this.user_table,
+									start: pageStart,
+									pageSize: this.pageSize
+								});
+					result = returnVal.result;
+
+				}
+
+
+			}
+			if(result=="success"){
+				for (var i = 0; i < returnVal.data.length; i++){
+					var grProbableUser = new GlideRecordSecure(this.user_table);
+					grProbableUser.addQuery('email', returnVal.data[i]);
+					grProbableUser.addEncodedQuery('sys_id!=' + this.affected_user);
+					grProbableUser.query();
+					if (grProbableUser.next()) {
+						var impactedUser = this._impactedUserFound(grProbableUser.getUniqueValue(), {});
+						if (impactedUser==null) {
+							this._addBadgeUsers(grProbableUser, "insert");
+						}
+						else {
+							this._addBadgeUsers(impactedUser, "update");
+						}
+					}
+
+
+
+
+				}
 				
+				pageStart = pageStart+this.pageSize;
+				if(pageStart>=result.totalCount)
+					return result;
+			} else {
+				return result;
 			}
 			
-				
 		}
-		if(result=="success"){
-			for (var i = 0; i < returnVal.data.length; i++){
-				var grProbableUser = new GlideRecordSecure(this.user_table);
-				grProbableUser.addQuery('email', returnVal.data[i]);
-				grProbableUser.addEncodedQuery('sys_id!=' + this.affected_user);
-				grProbableUser.query();
-				if (grProbableUser.next()) {
-					var impactedUser = this._impactedUserFound(grProbableUser.getUniqueValue(), {});
-					if (impactedUser==null) {
-						this._addBadgeUsers(grProbableUser, "insert");
-					}
-					else {
-						this._addBadgeUsers(impactedUser, "update");
-					}
-				}
-											
-											
-											
-											
-			}
-		}
+		
+		
+		
+		
 		
 		return result;
 		
@@ -162,7 +182,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_created_on>2020-06-24 20:30:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>78623ca2dbad1410a3b6176a489619c3</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>AlertScheduledDiagnosticsUtil</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -170,6 +190,6 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_78623ca2dbad1410a3b6176a489619c3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-04 09:03:42</sys_updated_on>
+        <sys_updated_on>2020-07-20 08:26:16</sys_updated_on>
     </sys_script_include>
 </record_update>

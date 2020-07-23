@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Diagnostics Event" max_length="40" name="sn_imt_diagnosis_diagnostics_event" sizeclass="12" type="collection">
+    <element label="Diagnostics Event" max_length="40" name="sn_imt_diagnosis_diagnostics_event" sizeclass="31" type="collection">
         <element choice="3" default="pending" label="Alert state" max_length="40" name="x_aleen_trace_alert_state" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Failed" value="failed"/>
