@@ -31,7 +31,7 @@
         <sys_created_on>2020-06-29 23:12:44</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>cd9e5b88dbb15010adac9f5faa9619c3</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>AlertHSService</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy/>
@@ -39,8 +39,8 @@
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>oauth_entity_cd9e5b88dbb15010adac9f5faa9619c3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-05 07:18:14</sys_updated_on>
-        <token_url>http://66.2.49.181:8080/alnth-health-safety-webapp/oauth/token</token_url>
+        <sys_updated_on>2020-08-04 22:46:31</sys_updated_on>
+        <token_url>http://&lt;&lt;ip:port&gt;&gt;/alnth-health-safety-webapp/oauth/token</token_url>
         <type>oauth_provider</type>
         <use_mutual_auth>false</use_mutual_auth>
         <user/>
