@@ -83,7 +83,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								endDate: this.end_date,
 								userTable: this.user_table,
 								start: pageStart,
-								pageSize: this.pageSize
+								pageSize: this.page_size
 							});
 		
 			var result = returnVal.result;
@@ -99,7 +99,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 									endDate: this.end_date,
 									userTable: this.user_table,
 									start: pageStart,
-									pageSize: this.pageSize
+									pageSize: this.page_size
 								});
 					result = returnVal.result;
 
@@ -108,6 +108,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 
 			}
 			if(result=="success"){
+				gs.info(" Obtained results:"+returnVal.data.length+": pageStart"+pageStart+": Total Count"+returnVal.totalCount);
 				for (var i = 0; i < returnVal.data.length; i++){
 					var grProbableUser = new GlideRecordSecure(this.user_table);
 					grProbableUser.addQuery('email', returnVal.data[i]);
@@ -128,8 +129,8 @@ AlertScheduledDiagnosticsUtil.prototype = {
 
 				}
 				
-				pageStart = pageStart+this.pageSize;
-				if(pageStart>=result.totalCount)
+				pageStart = parseInt(pageStart)+parseInt(this.page_size);
+				if(pageStart>=parseInt(returnVal.totalCount))
 					return result;
 			} else {
 				return result;
@@ -145,7 +146,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 		
 	},
 	_addBadgeUsers: function(grRec, action){
-		gs.info("_addBadgeUsers:"+grRec+":"+action);
+		//gs.info("_addBadgeUsers:"+grRec+":"+action);
 		if (action == "insert") {
 				var grImpacted = new GlideRecordSecure(this.impacted_user_table);
 				grImpacted.initialize();
@@ -182,7 +183,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_created_on>2020-06-24 20:30:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>78623ca2dbad1410a3b6176a489619c3</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>AlertScheduledDiagnosticsUtil</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -190,6 +191,6 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_78623ca2dbad1410a3b6176a489619c3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-20 08:26:16</sys_updated_on>
+        <sys_updated_on>2020-07-24 21:23:28</sys_updated_on>
     </sys_script_include>
 </record_update>

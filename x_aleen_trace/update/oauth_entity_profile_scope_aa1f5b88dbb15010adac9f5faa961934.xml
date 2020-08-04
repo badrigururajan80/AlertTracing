@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile_scope">
     <oauth_entity_profile_scope action="INSERT_OR_UPDATE">
         <oauth_entity_profile display_value="AlertHSService default_profile">e0ce5b88dbb15010adac9f5faa9619ca</oauth_entity_profile>
-        <oauth_entity_scope display_value="ui">1c0f5b88dbb15010adac9f5faa961933</oauth_entity_scope>
+        <oauth_entity_scope display_value="restapi">1c0f5b88dbb15010adac9f5faa961933</oauth_entity_scope>
         <sys_class_name>oauth_entity_profile_scope</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-06-29 23:14:22</sys_created_on>

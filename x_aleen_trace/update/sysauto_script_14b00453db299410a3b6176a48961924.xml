@@ -27,12 +27,15 @@ while (diagnosticGr.next()) {
     if (!isNaN(max_retries)) {
 		if (max_retries > parseInt(diagnosticGr.getValue('number_of_retries'))){
 			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGr.diagnostic_request, diagnosticGr);
+			gs.info('Diagnostic markUserAsAffected Start:'+diagnosticGr.getValue('number'));
 			var result = util.markUserAsAffected();
 			if(result=="success"){
+					gs.info('Diagnostic Event Mark User Success:'+diagnosticGr.getValue('number'));
 					diagnosticGr.x_aleen_trace_alert_state='inprogress';
 					diagnosticGr.number_of_retries=0;
 					diagnosticGr.update();
 			} else if(result=="failure"){
+					gs.info('Diagnostic Event Mark User Failure:'+diagnosticGr.getValue('number'));
 					diagnosticGr.number_of_retries+=1;
 					if(max_retries > parseInt(diagnosticGr.getValue('number_of_retries'))){
 						diagnosticGr.state='failed';
@@ -56,12 +59,15 @@ while (diagnosticGrIP.next()) {
     if (!isNaN(max_retries)) {
 		if (max_retries > parseInt(diagnosticGrIP.getValue('number_of_retries'))){
 			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGrIP.diagnostic_request, diagnosticGrIP);
+			gs.info('Diagnostic addImpactedUsersFromBadgeReader Start:'+diagnosticGr.getValue('number'));
 			var addResult = util.addImpactedUsersFromBadgeReader();
 			if(addResult=="success"){
+					gs.info('Diagnostic Event Add Impacted User Success:'+diagnosticGr.getValue('number'));
 					diagnosticGrIP.x_aleen_trace_alert_state='success';
 					diagnosticGrIP.state= 'success';
 					diagnosticGrIP.update();
 			} else if(addResult=="failure"){
+					gs.info('Diagnostic Event Add Impacted User Failure:'+diagnosticGr.getValue('number'));
 					diagnosticGrIP.number_of_retries+=1;
 					if(max_retries > parseInt(diagnosticGrIP.getValue('number_of_retries'))){
 						diagnosticGrIP.state='failed';
@@ -82,7 +88,7 @@ while (diagnosticGrIP.next()) {
         <sys_created_on>2020-06-26 23:18:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>14b00453db299410a3b6176a48961924</sys_id>
-        <sys_mod_count>29</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>Execute Badge Diagnostics (AlertEnterprise)</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy/>
@@ -90,7 +96,7 @@ while (diagnosticGrIP.next()) {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sysauto_script_14b00453db299410a3b6176a48961924</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-04 08:51:09</sys_updated_on>
+        <sys_updated_on>2020-08-04 19:45:29</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
