@@ -36,7 +36,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-06-26 23:01:52</sys_updated_on>
         <update_access>false</update_access>
-        <user_role display_value="x_aleen_trace.alerttracing_settings_user" name="x_aleen_trace.alerttracing_settings_user">048f7703db299410a3b6176a48961995</user_role>
+        <user_role display_value="x_aleen_trace.alerttracing_admin_user" name="x_aleen_trace.alerttracing_admin_user">048f7703db299410a3b6176a48961995</user_role>
         <ws_access>true</ws_access>
     </sys_db_object>
 </record_update>

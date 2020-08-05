@@ -15,7 +15,7 @@
         <sys_update_name>sys_security_acl_role_288fbb03db299410a3b6176a48961988</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-06-26 23:01:53</sys_updated_on>
-        <sys_user_role display_value="x_aleen_trace.alerttracing_settings_user" name="x_aleen_trace.alerttracing_settings_user">048f7703db299410a3b6176a48961995</sys_user_role>
+        <sys_user_role display_value="x_aleen_trace.alerttracing_admin_user" name="x_aleen_trace.alerttracing_admin_user">048f7703db299410a3b6176a48961995</sys_user_role>
         <transaction_id/>
     </sys_security_acl_role>
 </record_update>
