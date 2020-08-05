@@ -67,7 +67,7 @@ AlertReaderUtils.prototype = {
 				
 				gs.info("Existing token is empty");
 				var params = {grant_type:"password", username:''+userName, password:''+password};
-				gs.info("params:"+params.username+":"+params.password);
+				//gs.info("params:"+params.username+":"+params.password);
 				var text = json.encode(params);
 				var tokenResponse = oAuthClient.requestToken(authProfile, text);
 				gs.info("Error:"+tokenResponse.getErrorMessage());
@@ -237,7 +237,7 @@ AlertReaderUtils.prototype = {
 					 var response = r.execute();
 					 var responseBody = response.getBody();
 					 var httpStatus = response.getStatusCode();
-					 gs.info(responseBody+":"+httpStatus);
+					// gs.info(responseBody+":"+httpStatus);
 					 if(httpStatus==200){
 
 						 var result = JSON.parse(responseBody);
@@ -283,7 +283,7 @@ AlertReaderUtils.prototype = {
         <sys_created_on>2020-06-26 21:05:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5e44a7cfdba59410a3b6176a48961942</sys_id>
-        <sys_mod_count>92</sys_mod_count>
+        <sys_mod_count>93</sys_mod_count>
         <sys_name>AlertReaderUtils</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -291,6 +291,6 @@ AlertReaderUtils.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_5e44a7cfdba59410a3b6176a48961942</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-04 17:59:12</sys_updated_on>
+        <sys_updated_on>2020-08-05 03:05:26</sys_updated_on>
     </sys_script_include>
 </record_update>
