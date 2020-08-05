@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="New Section" section_id="30c23a33db5e1010adac9f5faa961922" sys_domain="global" table="sn_imt_diagnosis_diagnostics_event" version="3" view="AlertTracing_View">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>log_message</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+            <sys_id>41c23a33db5e1010adac9f5faa961932</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="b8c2f633db5e1010adac9f5faa9619a0">30c23a33db5e1010adac9f5faa961922</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_aleen_trace_alert_state</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+            <sys_id>c1c23a33db5e1010adac9f5faa961932</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="New Section" display_value="New Section" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="b8c2f633db5e1010adac9f5faa9619a0">30c23a33db5e1010adac9f5faa961922</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption>New Section</caption>
+            <header>false</header>
+            <name>sn_imt_diagnosis_diagnostics_event</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>30c23a33db5e1010adac9f5faa961922</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>New Section</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+            <sys_update_name>sys_ui_section_30c23a33db5e1010adac9f5faa961922</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="AlertTracing View" name="AlertTracing_View">b8c2f633db5e1010adac9f5faa9619a0</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</application>
+        <file_path/>
+        <instance_id>e930a3a4db4f5780cbf6d5b0cf9619fd</instance_id>
+        <instance_name>ven02573</instance_name>
+        <name>sys_ui_section_30c23a33db5e1010adac9f5faa961922</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="New Section" section_id="30c23a33db5e1010adac9f5faa961922" sys_domain="global" table="sn_imt_diagnosis_diagnostics_event" version="3" view="AlertTracing_View"><sys_ui_element action="INSERT_OR_UPDATE"><element>log_message</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2020-08-05 08:09:08</sys_created_on><sys_id>41c23a33db5e1010adac9f5faa961932</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="New Section" display_value="New Section" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="b8c2f633db5e1010adac9f5faa9619a0">30c23a33db5e1010adac9f5faa961922</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-08-05 08:09:08</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>x_aleen_trace_alert_state</element><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2020-08-05 08:09:08</sys_created_on><sys_id>c1c23a33db5e1010adac9f5faa961932</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="New Section" display_value="New Section" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="b8c2f633db5e1010adac9f5faa9619a0">30c23a33db5e1010adac9f5faa961922</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-08-05 08:09:08</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption>New Section</caption><header>false</header><name>sn_imt_diagnosis_diagnostics_event</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-08-05 08:09:08</sys_created_on><sys_customer_update>false</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>30c23a33db5e1010adac9f5faa961922</sys_id><sys_mod_count>0</sys_mod_count><sys_name>New Section</sys_name><sys_overrides/><sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope><sys_update_name>sys_ui_section_30c23a33db5e1010adac9f5faa961922</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-08-05 08:09:08</sys_updated_on><sys_user/><title>false</title><view display_value="AlertTracing View" name="AlertTracing_View">b8c2f633db5e1010adac9f5faa9619a0</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+        <payload_hash>-99130661</payload_hash>
+        <record_name>Diagnostics Event</record_name>
+        <reverted_from/>
+        <source>4146a6b7db865050c34541deaa96193e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+        <sys_id>49c23a33db5e1010adac9f5faa961933</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>173bdaab7b70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>c1c23a33e95e1010c17d2cca2739df33</update_guid>
+        <update_guid_history>c1c23a33e95e1010c17d2cca2739df33:-99130661</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 08:10:31</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>0d0284c41df9416d818cc4a7b49d9c81</sys_id>
+        <sys_metadata>30c23a33db5e1010adac9f5faa961922</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Section</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_parent display_value="Sn Imt Diagnosis Diagnostics Event">5b1c43f9dba55810adac9f5faa961904</sys_parent>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_scope_delete display_value="">1d11925a56784ece845c3ff4fc10a369</sys_scope_delete>
+        <sys_update_name>sys_ui_section_30c23a33db5e1010adac9f5faa961922</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_30c23a33db5e1010adac9f5faa961922">49c23a33db5e1010adac9f5faa961933</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 08:10:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
