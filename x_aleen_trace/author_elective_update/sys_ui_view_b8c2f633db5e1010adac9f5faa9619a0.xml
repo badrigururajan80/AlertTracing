@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view">
+    <sys_ui_view action="DELETE">
+        <group/>
+        <hidden>false</hidden>
+        <name>AlertTracing_View</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>b8c2f633db5e1010adac9f5faa9619a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AlertTracing View</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_ui_view_b8c2f633db5e1010adac9f5faa9619a0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+        <title>AlertTracing View</title>
+        <user/>
+    </sys_ui_view>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</application>
+        <file_path/>
+        <instance_id>e930a3a4db4f5780cbf6d5b0cf9619fd</instance_id>
+        <instance_name>ven02573</instance_name>
+        <name>sys_ui_view_b8c2f633db5e1010adac9f5faa9619a0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view"><sys_ui_view action="INSERT_OR_UPDATE"><group/><hidden>false</hidden><name>AlertTracing_View</name><roles/><sys_class_name>sys_ui_view</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-08-05 08:09:08</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>b8c2f633db5e1010adac9f5faa9619a0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>AlertTracing View</sys_name><sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope><sys_update_name>sys_ui_view_b8c2f633db5e1010adac9f5faa9619a0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-08-05 08:09:08</sys_updated_on><title>AlertTracing View</title><user/></sys_ui_view></record_update>]]></payload>
+        <payload_hash>2059649785</payload_hash>
+        <record_name>AlertTracing View</record_name>
+        <reverted_from/>
+        <source>4146a6b7db865050c34541deaa96193e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 08:09:08</sys_created_on>
+        <sys_id>3cc23a33db5e1010adac9f5faa96191e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>173bdaab6200000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 08:09:08</sys_updated_on>
+        <type>UI View</type>
+        <update_guid>74c23a33095e10106cbbc94b0c985d1e</update_guid>
+        <update_guid_history>74c23a33095e10106cbbc94b0c985d1e:2059649785</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-06 00:52:18</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sys_ui_view">sys_ui_view</sys_db_object>
+        <sys_id>016faf601c7d47ba800c3754c22a0a81</sys_id>
+        <sys_metadata>b8c2f633db5e1010adac9f5faa9619a0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AlertTracing View</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_scope_delete display_value="">1d11925a56784ece845c3ff4fc10a369</sys_scope_delete>
+        <sys_update_name>sys_ui_view_b8c2f633db5e1010adac9f5faa9619a0</sys_update_name>
+        <sys_update_version display_value="sys_ui_view_b8c2f633db5e1010adac9f5faa9619a0">3cc23a33db5e1010adac9f5faa96191e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-06 00:52:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

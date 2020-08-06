@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view">
+    <sys_ui_view action="DELETE">
+        <group/>
+        <hidden>false</hidden>
+        <name>diagnostic_jobs_-_alert</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 07:46:57</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>7fade63fdb1e1010adac9f5faa96199e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Diagnostic Jobs - Alert</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_ui_view_7fade63fdb1e1010adac9f5faa96199e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 07:46:57</sys_updated_on>
+        <title>Diagnostic Jobs - Alert</title>
+        <user/>
+    </sys_ui_view>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</application>
+        <file_path/>
+        <instance_id>e930a3a4db4f5780cbf6d5b0cf9619fd</instance_id>
+        <instance_name>ven02573</instance_name>
+        <name>sys_ui_view_7fade63fdb1e1010adac9f5faa96199e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view"><sys_ui_view action="INSERT_OR_UPDATE"><group/><hidden>false</hidden><name>diagnostic_jobs_-_alert</name><roles/><sys_class_name>sys_ui_view</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-08-05 07:46:57</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>7fade63fdb1e1010adac9f5faa96199e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Diagnostic Jobs - Alert</sys_name><sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope><sys_update_name>sys_ui_view_7fade63fdb1e1010adac9f5faa96199e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-08-05 07:46:57</sys_updated_on><title>Diagnostic Jobs - Alert</title><user/></sys_ui_view></record_update>]]></payload>
+        <payload_hash>784928236</payload_hash>
+        <record_name>Diagnostic Jobs - Alert</record_name>
+        <reverted_from/>
+        <source>4146a6b7db865050c34541deaa96193e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-05 07:46:57</sys_created_on>
+        <sys_id>b3ade63fdb1e1010adac9f5faa9619a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>173bd96670f0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-05 07:46:57</sys_updated_on>
+        <type>UI View</type>
+        <update_guid>fbade63fb51e101042d8ca854609d3a0</update_guid>
+        <update_guid_history>fbade63fb51e101042d8ca854609d3a0:784928236</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-06 00:51:22</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sys_ui_view">sys_ui_view</sys_db_object>
+        <sys_id>2c104a76268f481c92cba6b030911a04</sys_id>
+        <sys_metadata>7fade63fdb1e1010adac9f5faa96199e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Diagnostic Jobs - Alert</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_scope_delete display_value="">1d11925a56784ece845c3ff4fc10a369</sys_scope_delete>
+        <sys_update_name>sys_ui_view_7fade63fdb1e1010adac9f5faa96199e</sys_update_name>
+        <sys_update_version display_value="sys_ui_view_7fade63fdb1e1010adac9f5faa96199e">b3ade63fdb1e1010adac9f5faa9619a1</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-06 00:51:22</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
