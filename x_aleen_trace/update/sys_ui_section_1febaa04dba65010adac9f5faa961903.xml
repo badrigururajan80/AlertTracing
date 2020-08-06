@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="1febaa04dba65010adac9f5faa961903" sys_domain="global" table="sn_imt_diagnosis_diagnostics_event" version="3" view="Alert_Tracing">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>1febaa04dba65010adac9f5faa961908</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>17ebaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>97ebaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>sys_created_on</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>1bebaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>9bebaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>diagnostic_request</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>1febaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>http_status</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>9febaa04dba65010adac9f5faa961909</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number_of_retries</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>13ebaa04dba65010adac9f5faa96190a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>93ebaa04dba65010adac9f5faa96190a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>log_message</element>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>17ebaa04dba65010adac9f5faa96190a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_aleen_trace_alert_state</element>
+            <position>10</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_id>97ebaa04dba65010adac9f5faa96190a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="sn_imt_diagnosis_diagnostics_event" sys_domain="global" view="53ebaa04dba65010adac9f5faa961901">1febaa04dba65010adac9f5faa961903</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>sn_imt_diagnosis_diagnostics_event</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-08-06 02:17:45</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1febaa04dba65010adac9f5faa961903</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>sn_imt_diagnosis_diagnostics_event</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+            <sys_update_name>sys_ui_section_1febaa04dba65010adac9f5faa961903</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-08-06 02:17:45</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Alert_tracing" name="Alert_Tracing">53ebaa04dba65010adac9f5faa961901</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
