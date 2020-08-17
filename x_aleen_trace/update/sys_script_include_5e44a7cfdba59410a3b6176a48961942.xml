@@ -53,7 +53,7 @@ AlertReaderUtils.prototype = {
 				}
 				
 			},
-	setToken: function (userName,password,authProfile){
+	setToken: function (userName,password,authProfile,requestorId,oauthProfileId,requestorContext){
 		
 			
 			var oAuthClient = new sn_auth.GlideOAuthClient();
@@ -61,13 +61,19 @@ AlertReaderUtils.prototype = {
 			
 			
 			var json = new global.JSON();
-			var existingToken = oAuthClient.getToken(authProfile,userName);
+			var existingToken = oAuthClient.getToken(authProfile,requestorId);
+			//gs.info("Val:"+requestorId+":"+oauthProfileId+":"+requestorContext);
 		
 			if(existingToken==null){
 				
 				gs.info("Existing token is empty");
-				var params = {grant_type:"password", username:''+userName, password:''+password};
-				//gs.info("params:"+params.username+":"+params.password);
+			//	var requestor_context = 'sys_rest_message';
+				//var requestor_id = 'eb2f9f88dbb15010adac9f5faa9619ad';
+				//var oauth_profile_id='e0ce5b88dbb15010adac9f5faa9619ca';
+				
+				var params = {grant_type:"password", username:''+userName, password:''+password, oauth_requestor_context:''+requestorContext, oauth_requestor:''+requestorId, oauth_provider_profile:''+oauthProfileId}; 
+				//var params = {grant_type:"password", username:''+userName, password:''+password};
+				//gs.info("params:"+params.username+":"+params.password+":"+authProfile);
 				var text = json.encode(params);
 				var tokenResponse = oAuthClient.requestToken(authProfile, text);
 				gs.info("Error:"+tokenResponse.getErrorMessage());
@@ -75,7 +81,7 @@ AlertReaderUtils.prototype = {
 				var token = tokenResponse.getToken();
 				var access_token = token.getAccessToken() ;
 
-				
+				//gs.info("AccessToken:" + access_token);
 				gs.info("AccessTokenExpiresIn:" + token.getExpiresIn());
 				
 
@@ -88,7 +94,7 @@ AlertReaderUtils.prototype = {
 					this.token = existingToken.getAccessToken();
 				} else {
 					gs.info("Existing token is empty/expired");
-					var refreshParams = {grant_type:"refresh_token", username:'admin', password:'QWxlcnQxMjM0'};
+					var refreshParams = {grant_type:"refresh_token", username:''+userName, password:''+password, oauth_requestor_context:''+requestorContext, oauth_requestor:''+requestorId, oauth_provider_profile:''+oauthProfileId};
 					var refreshText = json.encode(params);
 					var refreshToken =  oAuthClient.requestToken(authProfile, refreshText);
 					gs.info("Error:"+refreshToken.getErrorMessage());
@@ -97,7 +103,7 @@ AlertReaderUtils.prototype = {
 					var r_access_token = rToken.getAccessToken() ;
 
 					
-					gs.info("AccessTokenExpiresIn:" + rToken.getExpiresIn());
+					gs.info("RefreshAccessTokenExpiresIn:" + rToken.getExpiresIn());
 					
 
 
@@ -131,7 +137,7 @@ AlertReaderUtils.prototype = {
 
 
 
-			this.setToken(userName,password,authProfile);
+			this.setToken(userName,password,authProfile,diagnosticRequestParams.requestorId,diagnosticRequestParams.oauthProfileId,diagnosticRequestParams.requestorContext);
 			
 			if(this.token==null || this.token==undefined){
 				return {result: "failure", errorMessage: "tokenNotFound"};
@@ -142,7 +148,7 @@ AlertReaderUtils.prototype = {
 					 var r = new sn_ws.RESTMessageV2('x_aleen_trace.AlertTracingAPI', 'MarkAffected');
 					 r.setStringParameter('emailId', user_email);
 					 r.setRequestHeader('Content-Type','application/json');
-					 r.setRequestHeader('Authorization', 'Bearer ' + this.token);
+					// r.setRequestHeader('Authorization', 'Bearer ' + this.token);
 
 
 					gs.info(" Calling mark affected");
@@ -220,7 +226,7 @@ AlertReaderUtils.prototype = {
 					authProfile = settingsGr.auth_entity;
 			}
 
-			this.setToken(userName,password,authProfile);
+			this.setToken(userName,password,authProfile,diagnosticRequestParams.requestorId,diagnosticRequestParams.oauthProfileId,diagnosticRequestParams.requestorContext);
 			if(this.token==null || this.token==undefined){
 				return {result: "failure", errorMessage: "tokenNotFound"};
 			}
@@ -283,7 +289,7 @@ AlertReaderUtils.prototype = {
         <sys_created_on>2020-06-26 21:05:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5e44a7cfdba59410a3b6176a48961942</sys_id>
-        <sys_mod_count>93</sys_mod_count>
+        <sys_mod_count>106</sys_mod_count>
         <sys_name>AlertReaderUtils</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -291,6 +297,6 @@ AlertReaderUtils.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_5e44a7cfdba59410a3b6176a48961942</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-05 03:05:26</sys_updated_on>
+        <sys_updated_on>2020-08-17 08:39:16</sys_updated_on>
     </sys_script_include>
 </record_update>

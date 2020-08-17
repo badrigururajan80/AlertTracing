@@ -9,7 +9,7 @@
         <name>AlertScheduledDiagnosticsUtil</name>
         <script><![CDATA[var AlertScheduledDiagnosticsUtil = Class.create();
 AlertScheduledDiagnosticsUtil.prototype = {
-	initialize: function(diagnostic_request, actionGr) {
+	initialize: function(diagnostic_request, actionGr,requestor_id,oauth_profile_id) {
 			
 			//Configurations
 			
@@ -21,6 +21,9 @@ AlertScheduledDiagnosticsUtil.prototype = {
 			this.page_size = gs.getProperty('sn_imt_diagnosis.page.size') || 20;
 			this.actionGr = actionGr;
 			this.token = null;
+			this.requestor_context = 'sys_rest_message';
+			this.requestor_id = requestor_id;
+			this.oauth_profile_id = oauth_profile_id;
 		
 			var diagnosticGr = new GlideRecordSecure(this.diagnostic_request_table);
 			if(diagnosticGr.get(this.diagnostic_request)){
@@ -42,7 +45,10 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								affectedUser: this.affected_user,
 								startDate: this.start_date,
 								endDate: this.end_date,
-								userTable: this.user_table
+								userTable: this.user_table,
+								requestorId: this.requestor_id,
+								oauthProfileId: this.oauth_profile_id,
+								requestorContext: this.requestor_context
 							});
 		var result = returnVal.result;
 		if(result=="failure")
@@ -55,7 +61,11 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								affectedUser: this.affected_user,
 								startDate: this.start_date,
 								endDate: this.end_date,
-								userTable: this.user_table
+								userTable: this.user_table,
+								requestorId: this.requestor_id,
+								oauthProfileId: this.oauth_profile_id,
+								requestorContext: this.requestor_context
+					
 							});
 				result = returnVal.result;
 				
@@ -83,7 +93,10 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								endDate: this.end_date,
 								userTable: this.user_table,
 								start: pageStart,
-								pageSize: this.page_size
+								pageSize: this.page_size,
+								requestorId: this.requestor_id,
+								oauthProfileId: this.oauth_profile_id,
+								requestorContext: this.requestor_context
 							});
 		
 			var result = returnVal.result;
@@ -99,7 +112,10 @@ AlertScheduledDiagnosticsUtil.prototype = {
 									endDate: this.end_date,
 									userTable: this.user_table,
 									start: pageStart,
-									pageSize: this.page_size
+									pageSize: this.page_size,
+									requestorId: this.requestor_id,
+									oauthProfileId: this.oauth_profile_id,
+									requestorContext: this.requestor_context
 								});
 					result = returnVal.result;
 
@@ -183,7 +199,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_created_on>2020-06-24 20:30:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>78623ca2dbad1410a3b6176a489619c3</sys_id>
-        <sys_mod_count>35</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>AlertScheduledDiagnosticsUtil</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -191,6 +207,6 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_78623ca2dbad1410a3b6176a489619c3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-24 21:23:28</sys_updated_on>
+        <sys_updated_on>2020-08-17 00:00:44</sys_updated_on>
     </sys_script_include>
 </record_update>
