@@ -9,33 +9,77 @@
         <name>AlertScheduledDiagnosticsUtil</name>
         <script><![CDATA[var AlertScheduledDiagnosticsUtil = Class.create();
 AlertScheduledDiagnosticsUtil.prototype = {
-	initialize: function(diagnostic_request, actionGr,requestor_id,oauth_profile_id) {
-			
-			//Configurations
-			
-			this.diagnostic_request = diagnostic_request;
+	initialize: function(diagnosticRequestGR, actionGr){
+			this.diagnostic_request = diagnosticRequestGR.diagnostic_request;
 			this.user_table = 'sys_user';
 			this.diagnostic_request_table = 'sn_imt_diagnosis_diagnostic_request';
-			this.impacted_user_table = 'sn_imt_diagnosis_impacted_users';
 			this.max_retries = gs.getProperty('sn_imt_diagnosis.maximum.retries') || 3;
 			this.page_size = gs.getProperty('sn_imt_diagnosis.page.size') || 20;
 			this.actionGr = actionGr;
 			this.token = null;
 			this.requestor_context = 'sys_rest_message';
+			
+			
+			var requestor_id;
+			var oauth_profile_id;
+
+			var restMessageGr = new GlideRecordSecure('sys_rest_message');
+			restMessageGr.addEncodedQuery('name=AlertTracingAPI');
+			restMessageGr.query();
+			while(restMessageGr.next()){
+				  requestor_id=restMessageGr.sys_id;
+				  oauth_profile_id=restMessageGr.oauth2_profile
+				  gs.info("Physical access diagnostic events RI:"+requestor_id+" OPI:"+oauth_profile_id);
+			}
+			
 			this.requestor_id = requestor_id;
 			this.oauth_profile_id = oauth_profile_id;
 		
-			var diagnosticGr = new GlideRecordSecure(this.diagnostic_request_table);
-			if(diagnosticGr.get(this.diagnostic_request)){
-				this.affected_user = diagnosticGr.getValue('affected_user');
-				this.end_date = diagnosticGr.getValue('end_date');
-				this.start_date = diagnosticGr.getValue('start_date');
+			this.affected_user = diagnosticRequestGR.getValue('affected_user');
+			this.end_date = diagnosticRequestGR.getValue('end_date');
+			this.start_date = diagnosticRequestGR.getValue('start_date');
+		
 			
+		
+	},
+	markAndGetImpactedUsers: function(){
+		
+		var returnVal = this.markUserAsAffected();
+		var result = returnVal.result;
+		gs.info("Result:"+result+"RV:"+returnVal);
+		if(result=="success")
+		{
+			returnVal = this.addImpactedUsersFromBadgeReader();
+			result = returnVal.result;
+			if(result=="success"){
+				return returnVal.data;
 			}
+		}
+		
+		if(result=="warning"){
+			//workaround as the state pending will change the state to success
+			this.actionGr.state='';
+			return '';
+		}
+		
+		if(result=="failure"){
+			var errorMessage = returnVal.errorMessage;
+			this.actionGr.log_message=errorMessage;
+			this.actionGr.number_of_retries+=1;
+			gs.info("Max Ret:"+this.max_retries);
+			if(this.max_retries <= parseInt(this.actionGr.getValue('number_of_retries'))){
+				this.actionGr.state='failed';
+				
+			}
+			this.actionGr.update();	
+			//workaround as the state pending will change the state to success in case it is not set to failed
+			this.actionGr.state='';
 			
 			
+		}
 			
-			
+		
+		
 	},
 	markUserAsAffected: function (){
 		
@@ -51,6 +95,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								requestorContext: this.requestor_context
 							});
 		var result = returnVal.result;
+		
 		if(result=="failure")
 		{
 			var errorMessage = returnVal.errorMessage;
@@ -67,14 +112,14 @@ AlertScheduledDiagnosticsUtil.prototype = {
 								requestorContext: this.requestor_context
 					
 							});
-				result = returnVal.result;
+				
 				
 			}
 			
 				
 		}
 		
-		return result;
+		return returnVal;
 		
 		
 		
@@ -83,7 +128,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 		
 		var fetchData = true;
 		var pageStart = 0;
-		
+		var userList = [];
 		while(fetchData){
 			var returnVal = new x_aleen_trace.AlertReaderUtils().addImpactedUsersFromBadgeReader({
 								tableName: this.diagnostic_request_table,
@@ -125,19 +170,21 @@ AlertScheduledDiagnosticsUtil.prototype = {
 			}
 			if(result=="success"){
 				gs.info(" Obtained results:"+returnVal.data.length+": pageStart"+pageStart+": Total Count"+returnVal.totalCount);
+				
 				for (var i = 0; i < returnVal.data.length; i++){
 					var grProbableUser = new GlideRecordSecure(this.user_table);
 					grProbableUser.addQuery('email', returnVal.data[i]);
 					grProbableUser.addEncodedQuery('sys_id!=' + this.affected_user);
 					grProbableUser.query();
 					if (grProbableUser.next()) {
-						var impactedUser = this._impactedUserFound(grProbableUser.getUniqueValue(), {});
+						userList.push(grProbableUser.getUniqueValue());
+						/*var impactedUser = this._impactedUserFound(grProbableUser.getUniqueValue(), {});
 						if (impactedUser==null) {
 							this._addBadgeUsers(grProbableUser, "insert");
 						}
 						else {
 							this._addBadgeUsers(impactedUser, "update");
-						}
+						}*/
 					}
 
 
@@ -146,10 +193,12 @@ AlertScheduledDiagnosticsUtil.prototype = {
 				}
 				
 				pageStart = parseInt(pageStart)+parseInt(this.page_size);
-				if(pageStart>=parseInt(returnVal.totalCount))
-					return result;
+				if(pageStart>=parseInt(returnVal.totalCount)){
+					return {result:"success",data:userList.join(',')};
+				}
+					
 			} else {
-				return result;
+				return {result:result,errorMessage: returnVal.errorMessage };
 			}
 			
 		}
@@ -161,6 +210,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
 		return result;
 		
 	},
+	
 	_addBadgeUsers: function(grRec, action){
 		//gs.info("_addBadgeUsers:"+grRec+":"+action);
 		if (action == "insert") {
@@ -199,7 +249,7 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_created_on>2020-06-24 20:30:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>78623ca2dbad1410a3b6176a489619c3</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>AlertScheduledDiagnosticsUtil</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy>read</sys_policy>
@@ -207,6 +257,6 @@ AlertScheduledDiagnosticsUtil.prototype = {
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_script_include_78623ca2dbad1410a3b6176a489619c3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-17 00:00:44</sys_updated_on>
+        <sys_updated_on>2020-11-20 16:40:29</sys_updated_on>
     </sys_script_include>
 </record_update>

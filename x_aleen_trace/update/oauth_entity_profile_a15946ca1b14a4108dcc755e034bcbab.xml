@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile">
+    <oauth_entity_profile action="INSERT_OR_UPDATE">
+        <default>true</default>
+        <grant_type>client_credentials</grant_type>
+        <jwt_provider/>
+        <name>AlertGuardianService default_profile</name>
+        <oauth_entity display_value="AlertGuardianService">23c806ca1b14a4108dcc755e034bcbae</oauth_entity>
+        <sys_class_name>oauth_entity_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-07 04:44:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a15946ca1b14a4108dcc755e034bcbab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AlertGuardianService default_profile</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>oauth_entity_profile_a15946ca1b14a4108dcc755e034bcbab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-07 04:44:21</sys_updated_on>
+    </oauth_entity_profile>
+</record_update>

@@ -3,6 +3,7 @@
         <element active="false" label="AlertEnterprise server URL" max_length="40" name="alertenterprise_server_url" type="string"/>
         <element label="Auth entity" max_length="255" name="auth_entity" type="string"/>
         <element label="Password" max_length="255" name="password" type="password2"/>
+        <element label="Request identifier" max_length="40" name="request_identifier" type="string"/>
         <element label="User name" max_length="40" name="user_name" type="string"/>
     </element>
 </database>

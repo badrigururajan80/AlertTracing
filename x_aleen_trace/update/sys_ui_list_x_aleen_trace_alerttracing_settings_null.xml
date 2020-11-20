@@ -2,63 +2,48 @@
     <sys_ui_list parent="" relationship="" sys_domain="global" table="x_aleen_trace_alerttracing_settings" version="2" view="">
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>alertenterprise_server_url</element>
-            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">3b7af60ddb75d010adac9f5faa961988</list_id>
+            <element>user_name</element>
+            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">eff1ff161ba828108dcc755e034bcb8d</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-07-02 23:08:14</sys_created_on>
-            <sys_id>377af609dbb5d010adac9f5faa96194e</sys_id>
+            <sys_created_on>2020-11-20 17:15:46</sys_created_on>
+            <sys_id>abf1ff161ba828108dcc755e034bcb8e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-07-02 23:08:14</sys_updated_on>
+            <sys_updated_on>2020-11-20 17:15:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>auth_entity</element>
-            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">3b7af60ddb75d010adac9f5faa961988</list_id>
+            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">eff1ff161ba828108dcc755e034bcb8d</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-07-02 23:08:14</sys_created_on>
-            <sys_id>bb7af609dbb5d010adac9f5faa96194e</sys_id>
+            <sys_created_on>2020-11-20 17:15:46</sys_created_on>
+            <sys_id>2ff1ff161ba828108dcc755e034bcb8e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-07-02 23:08:14</sys_updated_on>
+            <sys_updated_on>2020-11-20 17:15:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>password</element>
-            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">3b7af60ddb75d010adac9f5faa961988</list_id>
+            <element>request_identifier</element>
+            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">eff1ff161ba828108dcc755e034bcb8d</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-07-02 23:08:14</sys_created_on>
-            <sys_id>3f7af609dbb5d010adac9f5faa96194e</sys_id>
+            <sys_created_on>2020-11-20 17:15:46</sys_created_on>
+            <sys_id>aff1ff161ba828108dcc755e034bcb8e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-07-02 23:08:14</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>user_name</element>
-            <list_id display_value="x_aleen_trace_alerttracing_settings" element="NULL" name="x_aleen_trace_alerttracing_settings" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">3b7af60ddb75d010adac9f5faa961988</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-07-02 23:08:14</sys_created_on>
-            <sys_id>bf7af609dbb5d010adac9f5faa96194e</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-07-02 23:08:14</sys_updated_on>
+            <sys_updated_on>2020-11-20 17:15:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -72,11 +57,11 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-07-02 23:08:14</sys_created_on>
+            <sys_created_on>2020-11-20 17:15:46</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>3b7af60ddb75d010adac9f5faa961988</sys_id>
+            <sys_id>eff1ff161ba828108dcc755e034bcb8d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_aleen_trace_alerttracing_settings</sys_name>
             <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
@@ -85,7 +70,7 @@
             <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
             <sys_update_name>sys_ui_list_x_aleen_trace_alerttracing_settings_null</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-07-02 23:08:14</sys_updated_on>
+            <sys_updated_on>2020-11-20 17:15:46</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

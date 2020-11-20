@@ -54,7 +54,7 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-07-02 08:23:23</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>92d95248db665010adac9f5faa961976</sys_id>
+        <sys_id>8c8cc4e01b5ca0108dcc755e034bcb0f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Auth entity</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
@@ -63,7 +63,7 @@
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_dictionary_x_aleen_trace_alerttracing_settings_auth_entity</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-06 00:58:46</sys_updated_on>
+        <sys_updated_on>2020-11-02 03:48:03</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

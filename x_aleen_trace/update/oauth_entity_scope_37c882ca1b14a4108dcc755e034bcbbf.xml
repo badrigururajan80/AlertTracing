@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_scope">
+    <oauth_entity_scope action="INSERT_OR_UPDATE">
+        <in_default_profile>true</in_default_profile>
+        <name>write</name>
+        <oauth_entity display_value="AlertGuardianService">23c806ca1b14a4108dcc755e034bcbae</oauth_entity>
+        <oauth_entity_scope>write</oauth_entity_scope>
+        <sys_class_name>oauth_entity_scope</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-07 04:44:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>37c882ca1b14a4108dcc755e034bcbbf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>write</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>oauth_entity_scope_37c882ca1b14a4108dcc755e034bcbbf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-07 04:44:21</sys_updated_on>
+    </oauth_entity_scope>
+</record_update>

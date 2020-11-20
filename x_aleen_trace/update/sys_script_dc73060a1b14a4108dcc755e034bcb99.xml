@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>sn_imt_monitoring_request_for_entry</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Employee Granted Or Refused Entry</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	
+	var requestor_id;
+	var oauth_profile_id;
+	var requestor_context = 'sys_rest_message';
+	var json = new global.JSON();
+
+	var oAuthClient = new sn_auth.GlideOAuthClient();
+	var restMessageGr = new GlideRecordSecure('sys_rest_message');
+	restMessageGr.addEncodedQuery('name=AlertGuardianAPI');
+	restMessageGr.query();
+	while(restMessageGr.next()){
+	  requestor_id=restMessageGr.sys_id;
+	  oauth_profile_id=restMessageGr.oauth2_profile
+	  gs.info("Physical access diagnostic events RI:"+requestor_id+" OPI:"+oauth_profile_id);
+	}
+	
+	var requestBody = {};
+	var userAttributes = [];
+	var userAttribute = {};
+	userAttribute.name = "Email"
+	userAttribute.value = current.requester.email.toString();
+	userAttributes.push(userAttribute);
+	
+	userAttribute = {};
+	userAttribute.name = "AllowEntry"
+	userAttribute.value = current.access_granted ? 'true' : 'false';
+	userAttributes.push(userAttribute);
+	
+	userAttribute = {};
+	userAttribute.name = "Location"
+	userAttribute.value = current.location.name.toString();
+	userAttributes.push(userAttribute);
+	
+	
+	
+	requestBody.userAttributes = userAttributes;
+	
+	var settingsGr = new GlideRecordSecure('x_aleen_trace_alerttracing_settings');
+	settingsGr.query();
+	while (settingsGr.next()) {
+		requestBody.requestIdentifier = settingsGr.request_identifier;
+		
+	}
+	
+	
+	var payload = new global.JSON().encode(requestBody);
+
+
+
+	var params = {grant_type:"client_credentials",  oauth_requestor_context:''+requestor_context, oauth_requestor:''+requestor_id, oauth_provider_profile:''+oauth_profile_id};
+	var text = json.encode(params);
+	var tokenResponse = oAuthClient.requestToken('AlertGuardianService', text);
+	gs.info("Error:"+tokenResponse.getErrorMessage());
+
+	var token = tokenResponse.getToken();
+	var access_token = token.getAccessToken() ;
+
+	//gs.info("AccessToken:" + access_token);
+	gs.info("AccessTokenExpiresIn:" + token.getExpiresIn());
+	var r = new sn_ws.RESTMessageV2('x_aleen_trace.AlertGuardianAPI', 'UpdateBadge');
+	
+	r.setRequestHeader('Content-Type','application/json');
+	gs.info("Payload:"+payload);
+	r.setRequestBody(payload);
+	var response = r.execute();
+	var responseBody = response.getBody();
+	var httpStatus = response.getStatusCode();
+	gs.info(responseBody+":"+httpStatus+responseBody);
+	
+	
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-07 04:21:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>dc73060a1b14a4108dcc755e034bcb99</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Employee Granted Or Refused Entry</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sys_script_dc73060a1b14a4108dcc755e034bcb99</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-20 16:56:53</sys_updated_on>
+        <template/>
+        <when>async</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=dc73060a1b14a4108dcc755e034bcb99"/>
+</record_update>
