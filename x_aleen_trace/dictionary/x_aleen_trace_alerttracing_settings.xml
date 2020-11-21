@@ -2,8 +2,16 @@
     <element label="AlertTracing Settings" max_length="40" name="x_aleen_trace_alerttracing_settings" sizeclass="1" type="collection">
         <element active="false" label="AlertEnterprise server URL" max_length="40" name="alertenterprise_server_url" type="string"/>
         <element label="Auth entity" max_length="255" name="auth_entity" type="string"/>
+        <element label="Guardian oauth profile" max_length="32" name="guardian_oauth_profile" type="string"/>
+        <element label="Guardian rest message" max_length="32" name="guardian_rest_message" type="string"/>
         <element label="Password" max_length="255" name="password" type="password2"/>
         <element label="Request identifier" max_length="40" name="request_identifier" type="string"/>
         <element label="User name" max_length="40" name="user_name" type="string"/>
+        <index name="index">
+            <element name="guardian_oauth_profile"/>
+        </index>
+        <index name="index2">
+            <element name="guardian_rest_message"/>
+        </index>
     </element>
 </database>

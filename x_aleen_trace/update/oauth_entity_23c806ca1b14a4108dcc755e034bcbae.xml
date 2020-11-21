@@ -31,7 +31,7 @@
         <sys_created_on>2020-11-07 04:44:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>23c806ca1b14a4108dcc755e034bcbae</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>AlertGuardianService</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy/>
@@ -39,8 +39,8 @@
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>oauth_entity_23c806ca1b14a4108dcc755e034bcbae</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-10 06:40:54</sys_updated_on>
-        <token_url>https://coetest.cloud.alertenterprise.com/AlertEnterprise/oauth/token</token_url>
+        <sys_updated_on>2020-11-21 02:46:06</sys_updated_on>
+        <token_url>https://&lt;guardianurl&gt;&gt;/AlertEnterprise/oauth/token</token_url>
         <type>oauth_provider</type>
         <use_mutual_auth>false</use_mutual_auth>
         <user/>
