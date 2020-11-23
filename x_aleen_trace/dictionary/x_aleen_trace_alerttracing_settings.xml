@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="AlertTracing Settings" max_length="40" name="x_aleen_trace_alerttracing_settings" sizeclass="1" type="collection">
+    <element label="AlertTracing Settings" max_length="40" name="x_aleen_trace_alerttracing_settings" type="collection">
         <element active="false" label="AlertEnterprise server URL" max_length="40" name="alertenterprise_server_url" type="string"/>
         <element label="Auth entity" max_length="255" name="auth_entity" type="string"/>
         <element label="Guardian oauth profile" max_length="32" name="guardian_oauth_profile" type="string"/>
