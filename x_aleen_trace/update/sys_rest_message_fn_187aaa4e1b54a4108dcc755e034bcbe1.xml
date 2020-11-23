@@ -11,14 +11,14 @@
         <oauth2_profile/>
         <protocol_name/>
         <qualified_name>AlertGuardianAPI [ UpdateBadge ]</qualified_name>
-        <rest_endpoint>https://coetest.cloud.alertenterprise.com/AlertEnterprise/external/api/user/v1/sync</rest_endpoint>
+        <rest_endpoint>https://&lt;&lt;guardianurl&gt;&gt;/AlertEnterprise/external/api/user/v1/sync</rest_endpoint>
         <rest_message display_value="AlertGuardianAPI">eb3a6eca1b54a4108dcc755e034bcbcb</rest_message>
         <sys_class_name>sys_rest_message_fn</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-07 07:08:59</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>187aaa4e1b54a4108dcc755e034bcbe1</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>UpdateBadge</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy/>
@@ -26,7 +26,7 @@
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_rest_message_fn_187aaa4e1b54a4108dcc755e034bcbe1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-10 06:40:15</sys_updated_on>
+        <sys_updated_on>2020-11-21 02:30:32</sys_updated_on>
         <use_basic_auth>false</use_basic_auth>
         <use_mid_server/>
         <use_mutual_auth>false</use_mutual_auth>
