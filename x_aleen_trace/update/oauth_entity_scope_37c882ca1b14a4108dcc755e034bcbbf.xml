@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_scope">
     <oauth_entity_scope action="INSERT_OR_UPDATE">
-        <in_default_profile>true</in_default_profile>
+        <in_default_profile>false</in_default_profile>
         <name>write</name>
         <oauth_entity display_value="AlertGuardianService">23c806ca1b14a4108dcc755e034bcbae</oauth_entity>
         <oauth_entity_scope>write</oauth_entity_scope>
