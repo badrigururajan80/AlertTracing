@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="DELETE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <name>Execute Badge Diagnostics (AlertEnterprise)</name>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:00:30</run_period>
+        <run_start>2020-06-26 23:07:04</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[gs.info('Start of execution from Execute physical access diagnostic events');
+var util = '';
+var max_retries = gs.getProperty('sn_imt_diagnosis.maximum.retries') || 3;
+var requestor_id;
+var oauth_profile_id;
+
+var restMessageGr = new GlideRecordSecure('sys_rest_message');
+restMessageGr.addEncodedQuery('name=AlertTracingAPI');
+restMessageGr.query();
+while(restMessageGr.next()){
+	  requestor_id=restMessageGr.sys_id;
+	  oauth_profile_id=restMessageGr.oauth2_profile
+	  gs.info("Physical access diagnostic events RI:"+requestor_id+" OPI:"+oauth_profile_id);
+}
+
+var diagnosticGr = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGr.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=pending^type=badge_reader');
+diagnosticGr.query();
+while (diagnosticGr.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries > parseInt(diagnosticGr.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGr.diagnostic_request, diagnosticGr,requestor_id,oauth_profile_id);
+			gs.info('Diagnostic markUserAsAffected Start:'+diagnosticGr.getValue('number'));
+			var result = util.markUserAsAffected();
+			if(result=="success"){
+					gs.info('Diagnostic Event Mark User Success:'+diagnosticGr.getValue('number'));
+					diagnosticGr.x_aleen_trace_alert_state='inprogress';
+					diagnosticGr.number_of_retries=0;
+					diagnosticGr.update();
+			} else if(result=="failure"){
+					gs.info('Diagnostic Event Mark User Failure:'+diagnosticGr.getValue('number'));
+					diagnosticGr.number_of_retries+=1;
+					if(max_retries <= parseInt(diagnosticGr.getValue('number_of_retries'))){
+						diagnosticGr.state='failed';
+						diagnosticGr.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGr.update();
+			}
+			
+		}
+		
+	}
+}
+
+var diagnosticGrIP = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGrIP.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=inprogress^type=badge_reader');
+diagnosticGrIP.query();
+
+while (diagnosticGrIP.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries > parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGrIP.diagnostic_request, diagnosticGrIP,requestor_id,oauth_profile_id);
+			gs.info('Diagnostic addImpactedUsersFromBadgeReader Start:'+diagnosticGrIP.getValue('number'));
+			var addResult = util.addImpactedUsersFromBadgeReader();
+			if(addResult=="success"){
+					gs.info('Diagnostic Event Add Impacted User Success:'+diagnosticGrIP.getValue('number'));
+					diagnosticGrIP.x_aleen_trace_alert_state='success';
+					diagnosticGrIP.state= 'success';
+					diagnosticGrIP.update();
+			} else if(addResult=="failure"){
+					gs.info('Diagnostic Event Add Impacted User Failure:'+diagnosticGrIP.getValue('number'));
+					diagnosticGrIP.number_of_retries+=1;
+					if(max_retries <= parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+						diagnosticGrIP.state='failed';
+						diagnosticGrIP.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGrIP.update();
+			}
+			
+		}
+		
+	}
+}
+
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-06-26 23:18:04</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>14b00453db299410a3b6176a48961924</sys_id>
+        <sys_mod_count>42</sys_mod_count>
+        <sys_name>Execute Badge Diagnostics (AlertEnterprise)</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_update_name>sysauto_script_14b00453db299410a3b6176a48961924</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-02 18:37:40</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</application>
+        <file_path/>
+        <instance_id>e930a3a4db4f5780cbf6d5b0cf9619fd</instance_id>
+        <instance_name>ven02573</instance_name>
+        <name>sysauto_script_14b00453db299410a3b6176a48961924</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sysauto_script"&gt;
+    &lt;sysauto_script action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;false&lt;/active&gt;
+        &lt;business_calendar/&gt;
+        &lt;condition/&gt;
+        &lt;conditional&gt;false&lt;/conditional&gt;
+        &lt;entered_time&gt;1970-01-01 00:00:00&lt;/entered_time&gt;
+        &lt;name&gt;Execute Badge Diagnostics (AlertEnterprise)&lt;/name&gt;
+        &lt;run_as/&gt;
+        &lt;run_as_tz/&gt;
+        &lt;run_dayofmonth&gt;1&lt;/run_dayofmonth&gt;
+        &lt;run_dayofweek&gt;1&lt;/run_dayofweek&gt;
+        &lt;run_period&gt;1970-01-01 00:00:30&lt;/run_period&gt;
+        &lt;run_start&gt;2020-06-26 23:07:04&lt;/run_start&gt;
+        &lt;run_time&gt;1970-01-01 08:00:00&lt;/run_time&gt;
+        &lt;run_type&gt;periodically&lt;/run_type&gt;
+        &lt;script&gt;&lt;![CDATA[gs.info('Start of execution from Execute physical access diagnostic events');
+var util = '';
+var max_retries = gs.getProperty('sn_imt_diagnosis.maximum.retries') || 3;
+var requestor_id;
+var oauth_profile_id;
+
+var restMessageGr = new GlideRecordSecure('sys_rest_message');
+restMessageGr.addEncodedQuery('name=AlertTracingAPI');
+restMessageGr.query();
+while(restMessageGr.next()){
+	  requestor_id=restMessageGr.sys_id;
+	  oauth_profile_id=restMessageGr.oauth2_profile
+	  gs.info("Physical access diagnostic events RI:"+requestor_id+" OPI:"+oauth_profile_id);
+}
+
+var diagnosticGr = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGr.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=pending^type=badge_reader');
+diagnosticGr.query();
+while (diagnosticGr.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries &gt; parseInt(diagnosticGr.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGr.diagnostic_request, diagnosticGr,requestor_id,oauth_profile_id);
+			gs.info('Diagnostic markUserAsAffected Start:'+diagnosticGr.getValue('number'));
+			var result = util.markUserAsAffected();
+			if(result=="success"){
+					gs.info('Diagnostic Event Mark User Success:'+diagnosticGr.getValue('number'));
+					diagnosticGr.x_aleen_trace_alert_state='inprogress';
+					diagnosticGr.number_of_retries=0;
+					diagnosticGr.update();
+			} else if(result=="failure"){
+					gs.info('Diagnostic Event Mark User Failure:'+diagnosticGr.getValue('number'));
+					diagnosticGr.number_of_retries+=1;
+					if(max_retries &lt;= parseInt(diagnosticGr.getValue('number_of_retries'))){
+						diagnosticGr.state='failed';
+						diagnosticGr.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGr.update();
+			}
+			
+		}
+		
+	}
+}
+
+var diagnosticGrIP = new GlideRecordSecure('sn_imt_diagnosis_diagnostics_event');
+diagnosticGrIP.addEncodedQuery('diagnostic_request.active=true^x_aleen_trace_alert_state=inprogress^type=badge_reader');
+diagnosticGrIP.query();
+
+while (diagnosticGrIP.next()) {
+
+    if (!isNaN(max_retries)) {
+		if (max_retries &gt; parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+			util = new x_aleen_trace.AlertScheduledDiagnosticsUtil(diagnosticGrIP.diagnostic_request, diagnosticGrIP,requestor_id,oauth_profile_id);
+			gs.info('Diagnostic addImpactedUsersFromBadgeReader Start:'+diagnosticGrIP.getValue('number'));
+			var addResult = util.addImpactedUsersFromBadgeReader();
+			if(addResult=="success"){
+					gs.info('Diagnostic Event Add Impacted User Success:'+diagnosticGrIP.getValue('number'));
+					diagnosticGrIP.x_aleen_trace_alert_state='success';
+					diagnosticGrIP.state= 'success';
+					diagnosticGrIP.update();
+			} else if(addResult=="failure"){
+					gs.info('Diagnostic Event Add Impacted User Failure:'+diagnosticGrIP.getValue('number'));
+					diagnosticGrIP.number_of_retries+=1;
+					if(max_retries &lt;= parseInt(diagnosticGrIP.getValue('number_of_retries'))){
+						diagnosticGrIP.state='failed';
+						diagnosticGrIP.x_aleen_trace_alert_state='failed';
+					}
+						
+					diagnosticGrIP.update();
+			}
+			
+		}
+		
+	}
+}
+
+]]&gt;&lt;/script&gt;
+        &lt;sys_class_name&gt;sysauto_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2020-06-26 23:18:04&lt;/sys_created_on&gt;
+        &lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;
+        &lt;sys_id&gt;14b00453db299410a3b6176a48961924&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;42&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;Execute Badge Diagnostics (AlertEnterprise)&lt;/sys_name&gt;
+        &lt;sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace"&gt;fa49e02edb6d1410a3b6176a4896199f&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;
+        &lt;sys_scope display_value="AlertEnterpriseTracing"&gt;fa49e02edb6d1410a3b6176a4896199f&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sysauto_script_14b00453db299410a3b6176a48961924&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2020-11-02 18:37:40&lt;/sys_updated_on&gt;
+        &lt;time_zone/&gt;
+        &lt;upgrade_safe&gt;false&lt;/upgrade_safe&gt;
+    &lt;/sysauto_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-137332661</payload_hash>
+        <record_name>Execute Badge Diagnostics (AlertEnterprise)</record_name>
+        <reverted_from/>
+        <source>ccf0d788db306c10adac9f5faa961902</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>current</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-26 01:20:59</sys_created_on>
+        <sys_id>40011f88db306c10adac9f5faa9619ab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1760223a6bf0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-26 01:20:59</sys_updated_on>
+        <type>Scheduled Script Execution</type>
+        <update_guid>8c011f884a306c10cca541a4bff498aa</update_guid>
+        <update_guid_history>8c011f884a306c10cca541a4bff498aa:0,7247cf0404306c101bccc39afc6e9d79:0,2853771610a06810029f9b400271764e:0,98550248c250281076135bf44de8def7:0,c7d99248d666501091ca616589114cc4:0,83a95a080d6650108e895b415d3b810f:1997480041</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-26 03:12:36</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sysauto_script">sysauto_script</sys_db_object>
+        <sys_id>0225b44e185640209ab38f21fedbc440</sys_id>
+        <sys_metadata>14b00453db299410a3b6176a48961924</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Execute Badge Diagnostics (AlertEnterprise)</sys_name>
+        <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
+        <sys_scope_delete display_value="">1d11925a56784ece845c3ff4fc10a369</sys_scope_delete>
+        <sys_update_name>sysauto_script_14b00453db299410a3b6176a48961924</sys_update_name>
+        <sys_update_version display_value="sysauto_script_14b00453db299410a3b6176a48961924">40011f88db306c10adac9f5faa9619ab</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-26 03:12:36</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
