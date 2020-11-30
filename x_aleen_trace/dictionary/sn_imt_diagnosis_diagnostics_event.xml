@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Diagnostics Event" max_length="40" name="sn_imt_diagnosis_diagnostics_event" sizeclass="57" type="collection">
+        <element active="false" choice="1" label="Alert state (Deprecated)" max_length="40" name="x_aleen_trace_alert_state" type="choice">
+            <choice>
+                <element inactive="true" inactive_on_update="true" label="Failed" value="failed"/>
+                <element inactive="true" inactive_on_update="true" label="Ignored" value="ignored"/>
+                <element inactive="true" inactive_on_update="true" label="InProgress" value="inprogress"/>
+                <element inactive="true" inactive_on_update="true" label="Pending" value="pending"/>
+                <element inactive="true" inactive_on_update="true" label="Success" value="success"/>
+            </choice>
+        </element>
+    </element>
+</database>

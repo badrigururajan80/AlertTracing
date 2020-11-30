@@ -5,7 +5,7 @@
         <condition/>
         <conditional>false</conditional>
         <entered_time>1970-01-01 00:00:00</entered_time>
-        <name>Execute Badge Diagnostics (AlertEnterprise)</name>
+        <name>Execute Badge Diagnostics (AlertEnterprise) -- (Deprecated)</name>
         <run_as/>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
@@ -98,15 +98,15 @@ while (diagnosticGrIP.next()) {
         <sys_created_on>2020-06-26 23:18:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>14b00453db299410a3b6176a48961924</sys_id>
-        <sys_mod_count>42</sys_mod_count>
-        <sys_name>Execute Badge Diagnostics (AlertEnterprise)</sys_name>
+        <sys_mod_count>43</sys_mod_count>
+        <sys_name>Execute Badge Diagnostics (AlertEnterprise) -- (Deprecated)</sys_name>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sysauto_script_14b00453db299410a3b6176a48961924</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-02 18:37:40</sys_updated_on>
+        <sys_updated_on>2020-11-30 21:14:11</sys_updated_on>
         <time_zone/>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>

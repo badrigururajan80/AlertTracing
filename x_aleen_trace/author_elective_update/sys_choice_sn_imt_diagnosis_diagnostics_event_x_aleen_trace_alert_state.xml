@@ -22,7 +22,7 @@
             <dependent_value/>
             <element>x_aleen_trace_alert_state</element>
             <hint/>
-            <inactive>false</inactive>
+            <inactive>true</inactive>
             <label>Failed</label>
             <language>en</language>
             <name>sn_imt_diagnosis_diagnostics_event</name>
@@ -32,16 +32,16 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>66bb6caedb6d1410a3b6176a48961946</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-06-24 18:19:52</sys_updated_on>
+            <sys_updated_on>2020-11-30 22:12:50</sys_updated_on>
             <value>failed</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>x_aleen_trace_alert_state</element>
             <hint/>
-            <inactive>false</inactive>
+            <inactive>true</inactive>
             <label>Ignored</label>
             <language>en</language>
             <name>sn_imt_diagnosis_diagnostics_event</name>
@@ -51,16 +51,16 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>d3cb28aedb6d1410a3b6176a489619ff</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-06-24 18:20:10</sys_updated_on>
+            <sys_updated_on>2020-11-30 22:12:58</sys_updated_on>
             <value>ignored</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>x_aleen_trace_alert_state</element>
             <hint/>
-            <inactive>false</inactive>
+            <inactive>true</inactive>
             <label>InProgress</label>
             <language>en</language>
             <name>sn_imt_diagnosis_diagnostics_event</name>
@@ -70,16 +70,16 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>ff9f3f03db299410a3b6176a489619f9</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-06-26 23:02:36</sys_updated_on>
+            <sys_updated_on>2020-11-30 22:13:06</sys_updated_on>
             <value>inprogress</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>x_aleen_trace_alert_state</element>
             <hint/>
-            <inactive>false</inactive>
+            <inactive>true</inactive>
             <label>Pending</label>
             <language>en</language>
             <name>sn_imt_diagnosis_diagnostics_event</name>
@@ -89,16 +89,16 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>03dbacaedb6d1410a3b6176a489619ba</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-06-24 18:20:24</sys_updated_on>
+            <sys_updated_on>2020-11-30 22:13:14</sys_updated_on>
             <value>pending</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>x_aleen_trace_alert_state</element>
             <hint/>
-            <inactive>false</inactive>
+            <inactive>true</inactive>
             <label>Success</label>
             <language>en</language>
             <name>sn_imt_diagnosis_diagnostics_event</name>
@@ -108,9 +108,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>eeeb6caedb6d1410a3b6176a48961907</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-06-24 18:20:38</sys_updated_on>
+            <sys_updated_on>2020-11-30 22:13:22</sys_updated_on>
             <value>success</value>
         </sys_choice>
     </sys_choice>
