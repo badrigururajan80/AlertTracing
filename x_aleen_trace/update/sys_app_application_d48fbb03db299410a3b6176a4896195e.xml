@@ -7,7 +7,7 @@
         <hint/>
         <name>AlertTracing Settings</name>
         <order>100</order>
-        <roles>x_aleen_trace.alerttracing_settings_user,sn_imt_tracing.badge_admin,sn_imt_tracing.badge_manager</roles>
+        <roles>sn_imt_tracing.badge_admin,sn_imt_tracing.badge_manager,x_aleen_trace.alerttracing_admin_user</roles>
         <sys_class_name>sys_app_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-06-26 23:01:53</sys_created_on>
@@ -15,7 +15,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d48fbb03db299410a3b6176a4896195e</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Alertenterprise Tracing</sys_name>
         <sys_overrides/>
         <sys_package display_value="AlertEnterpriseTracing" source="x_aleen_trace">fa49e02edb6d1410a3b6176a4896199f</sys_package>
@@ -24,7 +24,7 @@
         <sys_scope display_value="AlertEnterpriseTracing">fa49e02edb6d1410a3b6176a4896199f</sys_scope>
         <sys_update_name>sys_app_application_d48fbb03db299410a3b6176a4896195e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-05 07:21:34</sys_updated_on>
+        <sys_updated_on>2020-12-04 18:56:23</sys_updated_on>
         <title>Alertenterprise Tracing</title>
         <view_name/>
     </sys_app_application>

@@ -18,21 +18,21 @@
         <scoped_administration>false</scoped_administration>
         <short_description>Integrate AlertEnterprise Safety App with Emergency Exposure and Contact Tracing</short_description>
         <source>x_aleen_trace</source>
-        <store_correlation_id>REPOAPP0000317742</store_correlation_id>
-        <store_url>https://tpp.servicenow.com/sn_appstore_s</store_url>
+        <store_correlation_id>REPOAPP0000319736</store_correlation_id>
+        <store_url/>
         <sys_class_name>sys_app</sys_class_name>
         <sys_code/>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-06-24 18:09:00</sys_created_on>
         <sys_id>fa49e02edb6d1410a3b6176a4896199f</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-12-04 08:56:36</sys_updated_on>
+        <sys_updated_on>2020-12-04 19:02:06</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role/>
         <vendor/>
         <vendor_prefix/>
-        <version>2.0.5</version>
+        <version>2.0.6</version>
     </sys_app>
 </record_update>
